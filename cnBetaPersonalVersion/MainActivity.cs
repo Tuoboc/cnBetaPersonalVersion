@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace cnBetaPersonalVersion
 {
-    [Activity(Label = "cnBetaPersonalVersion", MainLauncher = true)]
+    [Activity(Label = "cnBeta个人版")]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
