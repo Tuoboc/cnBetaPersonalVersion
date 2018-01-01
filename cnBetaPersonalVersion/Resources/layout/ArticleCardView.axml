@@ -8,28 +8,27 @@
         android:layout_height="wrap_content"
         card_view:cardElevation="4dp"
         card_view:cardUseCompatPadding="true"
-        card_view:cardCornerRadius="5dp">
+        card_view:cardCornerRadius="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="8dp"
+            android:background="@color/cardview_light_background">
             <LinearLayout
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:padding="9dp">
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:id="@+id/imageView"
-                    android:scaleType="centerCrop"
-                    android:maxWidth="50dp"
-                    android:maxHeight="50dp"
-                    android:minHeight="25dp"
-                    android:minWidth="25dp" />
+                    android:src="@drawable/loading"
+                    android:scaleType="centerInside"
+                    android:layout_marginLeft="0.0dp" />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="#333333"
@@ -55,7 +54,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#333333"
                     android:text="OtherInformation"
                     android:id="@+id/textViewOther"

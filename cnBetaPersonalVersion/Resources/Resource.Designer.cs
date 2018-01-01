@@ -1495,13 +1495,16 @@ namespace cnBetaPersonalVersion
 			public const int abc_textfield_search_material = 2130837572;
 			
 			// aapt resource value: 0x7f020045
-			public const int logo = 2130837573;
-			
-			// aapt resource value: 0x7f020047
-			public const int notification_template_icon_bg = 2130837575;
+			public const int loading = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int SplashScreen = 2130837574;
+			public const int logo = 2130837574;
+			
+			// aapt resource value: 0x7f020048
+			public const int notification_template_icon_bg = 2130837576;
+			
+			// aapt resource value: 0x7f020047
+			public const int SplashScreen = 2130837575;
 			
 			static Drawable()
 			{

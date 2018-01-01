@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Widget;
 using Java.Net;
+using System.IO;
 
 namespace cnBetaPersonalVersion
 {
@@ -45,12 +46,21 @@ namespace cnBetaPersonalVersion
         {
             articleList = atl;
         }
-        public override int ItemCount => throw new NotImplementedException();
+        public override int ItemCount =>  articleList.ArticleNum;
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             ArticleHolder ah = holder as ArticleHolder;
-            //ah.Image.setim.SetImageURI(new Android.Net.Uri.Builder(articleList[position].ImageURL));
+            GetImage(position, ah);
+            ah.Title.Text = articleList[position].Title;
+            ah.Summary.Text = "    " + articleList[position].Summary;
+            ah.Other.Text = articleList[position].Type+"|"+articleList[position].PulishTime + "|" + "已阅读"+articleList[position].ReadTimes+"次";
+        }
+
+        private async void GetImage(int position,ArticleHolder ah)
+        {
+            var stream = await articleList.GetFileStreamAsync(articleList[position].ImageURL);
+            ah.Image.SetImageBitmap(Android.Graphics.BitmapFactory.DecodeStream(stream));
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
