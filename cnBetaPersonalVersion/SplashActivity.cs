@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
@@ -10,6 +13,7 @@ using Android.Runtime;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using HtmlAgilityPack;
 
 namespace cnBetaPersonalVersion
 {
@@ -33,8 +37,12 @@ namespace cnBetaPersonalVersion
         // Simulates background work that happens behind the splash screen
         async void SimulateStartup()
         {
-            await Task.Delay(2000); // Simulate a bit of startup work.
+            ArticleList articleList = new ArticleList();
+            await articleList.GetArticle();
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
+
+
     }
+
 }

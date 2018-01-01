@@ -54,7 +54,7 @@ namespace cnBetaPersonalVersion
             GetImage(position, ah);
             ah.Title.Text = articleList[position].Title;
             ah.Summary.Text = "    " + articleList[position].Summary;
-            ah.Other.Text = articleList[position].Type+"|"+articleList[position].PulishTime + "|" + "已阅读"+articleList[position].ReadTimes+"次";
+            ah.Other.Text = articleList[position].OtherInfo.Replace("&nbsp;", ""); ;
         }
 
         private async void GetImage(int position,ArticleHolder ah)
