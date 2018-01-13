@@ -13,6 +13,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using HtmlAgilityPack;
+using Newtonsoft.Json;
 
 namespace cnBetaPersonalVersion
 {
@@ -27,15 +28,14 @@ namespace cnBetaPersonalVersion
         public string URL { get; set; }
         public string ImageURL { get; set; }
 
+       
     }
     public class ArticleList
     {
+        public string _csrf { get; set; }
+
         public static Article[] articleList = {
-            new Article{Title="北京首条磁浮线路开始试运营",
-            Summary="12月30日，北京首条中低速磁浮轨道交通S1线开始试运营，标志着中低速磁浮交通技术工程化研发成果在北京成功落地。据了解，S1线连接石景山区和门头沟区，是北京西部居民出行的重要交通线路，线路由苹果园站（暂缓开通）、金安桥站、四道桥站、桥户营站、上岸站、栗园庄站、小园站和石厂站八座车站组成。",
-            Type="科技",
-            OtherInfo="发布于2018-01-01 12:10  |  291次阅读  |  0个意见",
-            ImageURL="https://static.cnbetacdn.com/thumb/mini/article/2017/1231/fc985fcd2610bf1.jpg"}
+           
         };
 
         public void SetList(List<Article> list)
@@ -43,6 +43,11 @@ namespace cnBetaPersonalVersion
             articleList = list.ToArray();
         }
 
+        public void AddList(List<Article>list)
+        {
+           articleList= articleList.Union(list.ToArray()).ToArray();            
+        }
+             
         public Article this[int i]
         {
             get { return articleList[i]; }
@@ -78,12 +83,15 @@ namespace cnBetaPersonalVersion
             List<Article> articleList = new List<Article>();
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create("http://www.cnbeta.com/");
-                var response = (HttpWebResponse)await request.GetResponseAsync();
-                var responseString = response.GetResponseStream();
+                var responseString = await GetFileStreamAsync("http://www.cnbeta.com/");
                 HtmlDocument html = new HtmlDocument();
 
                 html.Load(responseString);
+                var _csrf = html.DocumentNode.SelectSingleNode(@"/html/head/meta[18]");
+                if (_csrf != null)
+                {
+                    GlobalVariables._csrf = _csrf.Attributes["content"].Value;
+                }
                 var res = html.DocumentNode.SelectSingleNode(@"/html/body/div[1]/div[4]/div/div[1]/div[2]");
                 if (res != null)
                 {
@@ -178,6 +186,27 @@ namespace cnBetaPersonalVersion
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task GetMoreArticle()
+        {
+            List<Article> articleList = new List<Article>();
+            try
+            {
+                var responseString = await GetFileStreamAsync("http://www.cnbeta.com/");
+                responseString.Position = 0;
+                StreamReader reader = new StreamReader(responseString);
+                string text = reader.ReadToEnd();
+                JsonResult m = JsonConvert.DeserializeObject<JsonResult>(text);
+                foreach (ListItem item in m.result.list)
+                {
+
+                }
+            }
+            catch
+            {
+
             }
         }
     }
