@@ -144,10 +144,14 @@ namespace cnBetaPersonalVersion
                             }
                             //其他信息
                             dd = item.SelectSingleNode(@"div").SelectSingleNode(@"ul").SelectNodes("li");
-                            foreach (var node in dd)
+                            for (int i=0;i<dd.Count;i++)
                             {
-                                var text = node.InnerText;
-                                otherList.Add(text);
+                                if(i==0)
+                                {
+                                    var text = dd[i].InnerText;
+                                    otherList.Add(text);
+                                }
+                               
                             }
 
                             

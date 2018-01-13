@@ -2,6 +2,7 @@
 using Android.Widget;
 using Android.OS;
 using Android.Support.V7.Widget;
+using Android.Content;
 
 namespace cnBetaPersonalVersion
 {
@@ -29,7 +30,11 @@ namespace cnBetaPersonalVersion
 
         private void MArticleAdapter_ItemClick(object sender, int e)
         {
-            Toast.MakeText(this, mArticleList[e].Title, ToastLength.Short);
+            Intent intent = new Intent(this, typeof(DetailActivity));
+            intent.PutExtra("title", mArticleList[e].Title);
+            intent.PutExtra("url",mArticleList[e].URL);
+            StartActivity(intent);
+            //Toast.MakeText(this, mArticleList[e].Title, ToastLength.Short).Show();
         }
     }
 }

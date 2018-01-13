@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
+    <Compile Include="DetailActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="RecyclerViewHelper.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -92,6 +93,9 @@
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\ArticleCardView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ArticleDetail.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
