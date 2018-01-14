@@ -13,6 +13,7 @@ using Android.Support.V7.Widget;
 using Java.Net;
 using System.IO;
 using System.Threading;
+using System.ComponentModel;
 
 namespace cnBetaPersonalVersion
 {
@@ -36,6 +37,7 @@ namespace cnBetaPersonalVersion
     public class ArticleAdapter : RecyclerView.Adapter
     {
         public event EventHandler<int> ItemClick;
+        Stream stream;
         void OnClick(int position)
         {
             if (ItemClick != null)
@@ -59,9 +61,31 @@ namespace cnBetaPersonalVersion
             ah.Other.Text = articleList[position].OtherInfo.Replace("&nbsp;", ""); ;
         }
 
-        private  void GetImage(int position, ArticleHolder ah)
+        private void GetImage(int position, ArticleHolder ah)
         {
-            var stream =  articleList.GetFileStream(articleList[position].ImageURL);
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += BackgroundWorker_DoWork;
+            backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
+
+            var sender = new object[2];
+            sender[0] = articleList[position].ImageURL;
+            sender[1] = ah;
+            backgroundWorker.RunWorkerAsync(sender);
+
+            // var stream =  articleList.GetFileStream(articleList[position].ImageURL);
+            // ah.Image.SetImageBitmap(Android.Graphics.BitmapFactory.DecodeStream(stream));
+        }
+
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
+
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var receive = e.Argument as object[];
+            var ah = (ArticleHolder)receive[1];
+            stream = articleList.GetFileStream((string)receive[0]);
             ah.Image.SetImageBitmap(Android.Graphics.BitmapFactory.DecodeStream(stream));
         }
 
