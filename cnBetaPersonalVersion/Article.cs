@@ -63,12 +63,12 @@ namespace cnBetaPersonalVersion
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public async Task<Stream> GetFileStreamAsync(string url)
+        public Stream GetFileStream(string url)
         {
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create(url);
-                var response = (HttpWebResponse)await request.GetResponseAsync();
+                var response = (HttpWebResponse) request.GetResponse();
                 var responseString = response.GetResponseStream();
                 return responseString;
             }
@@ -78,12 +78,12 @@ namespace cnBetaPersonalVersion
             }
         }
 
-        public async Task GetArticle()
+        public  void GetArticle()
         {
             List<Article> articleList = new List<Article>();
             try
             {
-                var responseString = await GetFileStreamAsync("http://www.cnbeta.com/");
+                var responseString =  GetFileStream("http://www.cnbeta.com/");
                 HtmlDocument html = new HtmlDocument();
 
                 html.Load(responseString);
@@ -189,20 +189,31 @@ namespace cnBetaPersonalVersion
             }
         }
 
-        public async Task GetMoreArticle()
+        public void GetMoreArticle()
         {
             List<Article> articleList = new List<Article>();
+            Regex regex;
             try
             {
-                var responseString = await GetFileStreamAsync("http://www.cnbeta.com/");
+                var responseString =  GetFileStream("http://www.cnbeta.com/");
                 responseString.Position = 0;
                 StreamReader reader = new StreamReader(responseString);
                 string text = reader.ReadToEnd();
                 JsonResult m = JsonConvert.DeserializeObject<JsonResult>(text);
                 foreach (ListItem item in m.result.list)
                 {
-
+                    Article article = new Article();
+                    article.Title = item.title;
+                    article.ImageURL = item.thumb;
+                    regex = new Regex(@"<[^>]*>");
+                    article.Summary = regex.Replace(item.hometext, "");
+                    article.URL = item.url_show;
+                    article.OtherInfo = "发布于" + item.inputtime + " | " + item.counter + "次阅读" + " | "+item.comments+"个意见";
+                    article.ID = item.sid;
+                    article.Type = item.label.name;
+                    articleList.Add(article);
                 }
+                this.AddList(articleList);
             }
             catch
             {

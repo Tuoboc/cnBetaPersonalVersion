@@ -59,9 +59,9 @@ namespace cnBetaPersonalVersion
             ah.Other.Text = articleList[position].OtherInfo.Replace("&nbsp;", ""); ;
         }
 
-        private async void GetImage(int position, ArticleHolder ah)
+        private  void GetImage(int position, ArticleHolder ah)
         {
-            var stream = await articleList.GetFileStreamAsync(articleList[position].ImageURL);
+            var stream =  articleList.GetFileStream(articleList[position].ImageURL);
             ah.Image.SetImageBitmap(Android.Graphics.BitmapFactory.DecodeStream(stream));
         }
 

@@ -35,10 +35,10 @@ namespace cnBetaPersonalVersion
         }
 
         // Simulates background work that happens behind the splash screen
-        async void SimulateStartup()
+         void SimulateStartup()
         {
             ArticleList articleList = new ArticleList();
-            await articleList.GetArticle();
+             articleList.GetArticle();
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
 
