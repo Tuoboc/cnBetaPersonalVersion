@@ -192,6 +192,7 @@ namespace cnBetaPersonalVersion
         public async Task GetMoreArticle()
         {
             List<Article> articleList = new List<Article>();
+            Regex regex;
             try
             {
                 var responseString = await GetFileStreamAsync("http://www.cnbeta.com/");
@@ -201,8 +202,18 @@ namespace cnBetaPersonalVersion
                 JsonResult m = JsonConvert.DeserializeObject<JsonResult>(text);
                 foreach (ListItem item in m.result.list)
                 {
-
+                    Article article = new Article();
+                    article.Title = item.title;
+                    article.ImageURL = item.thumb;
+                    regex = new Regex(@"<[^>]*>");
+                    article.Summary = regex.Replace(item.hometext, "");
+                    article.URL = item.url_show;
+                    article.OtherInfo = "发布于" + item.inputtime + " | " + item.counter + "次阅读" + " | "+item.comments+"个意见";
+                    article.ID = item.sid;
+                    article.Type = item.label.name;
+                    articleList.Add(article);
                 }
+                this.AddList(articleList);
             }
             catch
             {
