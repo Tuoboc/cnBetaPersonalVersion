@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1"
+    android:id="@+id/tableLayout1">
+    <TableRow>
+        <TextView
+            android:layout_span="2"
+            android:text="系统设置"
+            android:gravity="center"
+            android:textSize="24dp" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:textSize="20dp"
+            android:text="无图模式"
+            android:padding="10dp" />
+        <Switch
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:gravity="right"
+            android:id="@+id/PicMode" />
+    </TableRow>
+    <TableRow>
+        <Button
+           android:id="@+id/CheckUpdate"
+            android:layout_span="2"
+            android:gravity="center"
+            android:text="检查更新"
+            android:layout_width="match_parent" />
+    </TableRow>
+</TableLayout>

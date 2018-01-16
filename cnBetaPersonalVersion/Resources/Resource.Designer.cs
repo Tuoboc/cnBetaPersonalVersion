@@ -1500,11 +1500,14 @@ namespace cnBetaPersonalVersion
 			// aapt resource value: 0x7f020046
 			public const int logo = 2130837574;
 			
-			// aapt resource value: 0x7f020048
-			public const int notification_template_icon_bg = 2130837576;
+			// aapt resource value: 0x7f020049
+			public const int notification_template_icon_bg = 2130837577;
 			
 			// aapt resource value: 0x7f020047
-			public const int SplashScreen = 2130837575;
+			public const int settings_128px = 2130837575;
+			
+			// aapt resource value: 0x7f020048
+			public const int SplashScreen = 2130837576;
 			
 			static Drawable()
 			{
@@ -1521,6 +1524,12 @@ namespace cnBetaPersonalVersion
 			
 			// aapt resource value: 0x7f070056
 			public const int ArticleContent = 2131165270;
+			
+			// aapt resource value: 0x7f070067
+			public const int CheckUpdate = 2131165287;
+			
+			// aapt resource value: 0x7f070066
+			public const int PicMode = 2131165286;
 			
 			// aapt resource value: 0x7f070058
 			public const int action0 = 2131165272;
@@ -1666,6 +1675,9 @@ namespace cnBetaPersonalVersion
 			// aapt resource value: 0x7f07005b
 			public const int media_actions = 2131165275;
 			
+			// aapt resource value: 0x7f070068
+			public const int menuItem1 = 2131165288;
+			
 			// aapt resource value: 0x7f07001b
 			public const int middle = 2131165211;
 			
@@ -1776,6 +1788,9 @@ namespace cnBetaPersonalVersion
 			
 			// aapt resource value: 0x7f07000c
 			public const int tabMode = 2131165196;
+			
+			// aapt resource value: 0x7f070065
+			public const int tableLayout1 = 2131165285;
 			
 			// aapt resource value: 0x7f070062
 			public const int text = 2131165282;
@@ -1981,7 +1996,10 @@ namespace cnBetaPersonalVersion
 			public const int select_dialog_singlechoice_material = 2130968614;
 			
 			// aapt resource value: 0x7f040027
-			public const int support_simple_spinner_dropdown_item = 2130968615;
+			public const int Setting = 2130968615;
+			
+			// aapt resource value: 0x7f040028
+			public const int support_simple_spinner_dropdown_item = 2130968616;
 			
 			static Layout()
 			{
@@ -1989,6 +2007,22 @@ namespace cnBetaPersonalVersion
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0d0000
+			public const int mainMenu = 2131558400;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}

@@ -33,6 +33,7 @@ namespace cnBetaPersonalVersion
     public class ArticleList
     {
         public string _csrf { get; set; }
+        public int _page = 1;
 
         public static Article[] articleList = {
            
@@ -195,7 +196,8 @@ namespace cnBetaPersonalVersion
             Regex regex;
             try
             {
-                var responseString = await GetFileStreamAsync("http://www.cnbeta.com/");
+                string url = "http://www.cnbeta.com/home/more?&type=all&page="+(_page+1)+"&_csrf="+_csrf+"&_"+GetTimeStamp();
+                var responseString = await GetFileStreamAsync(url);
                 responseString.Position = 0;
                 StreamReader reader = new StreamReader(responseString);
                 string text = reader.ReadToEnd();
@@ -219,6 +221,12 @@ namespace cnBetaPersonalVersion
             {
 
             }
+        }
+
+        public static string GetTimeStamp()
+        {
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return Convert.ToInt64(ts.TotalSeconds).ToString();
         }
     }
 }
