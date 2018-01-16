@@ -45,19 +45,12 @@ namespace cnBetaPersonalVersion
         {
             editor.PutBoolean("AutoUpdate", e.IsChecked);
             editor.Apply();
-            if (e.IsChecked)
-            {
-                Toast.MakeText(this, "开启自动更新", ToastLength.Short).Show();
-            }
-            else
-            {
-                Toast.MakeText(this, "关闭自动更新", ToastLength.Short).Show();
-            }
+
         }
 
         private void CheckUpdate_Click(object sender, EventArgs e)
         {
-           
+            //http://tuoboc.tk:8800/api/cnBetaDownLoad
             Toast.MakeText(this, "正在检查更新", ToastLength.Short).Show();
         }
 
@@ -66,14 +59,6 @@ namespace cnBetaPersonalVersion
 
             editor.PutBoolean("PicMode", e.IsChecked);
             editor.Apply();
-            if(e.IsChecked)
-            {
-                Toast.MakeText(this, "开启无图模式", ToastLength.Short).Show();
-            }
-            else
-            {
-                Toast.MakeText(this, "关闭无图模式", ToastLength.Short).Show();
-            }
             
         }
 

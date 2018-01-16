@@ -197,7 +197,7 @@ namespace cnBetaPersonalVersion
             try
             {
                 string url = "http://www.cnbeta.com/home/more?&type=all&page="+(_page+1)+"&_csrf="+_csrf+"&_"+GetTimeStamp();
-                var responseString = await GetFileStreamAsync(url);
+                var responseString =  GetFileStream(url);
                 responseString.Position = 0;
                 StreamReader reader = new StreamReader(responseString);
                 string text = reader.ReadToEnd();

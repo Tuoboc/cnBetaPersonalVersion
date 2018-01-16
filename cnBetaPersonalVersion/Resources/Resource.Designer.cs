@@ -1525,19 +1525,17 @@ namespace cnBetaPersonalVersion
 			// aapt resource value: 0x7f070056
 			public const int ArticleContent = 2131165270;
 			
+			// aapt resource value: 0x7f070068
+			public const int AutoUpdate = 2131165288;
+			
+			// aapt resource value: 0x7f070069
+			public const int CheckUpdate = 2131165289;
+			
+			// aapt resource value: 0x7f070067
+			public const int PicMode = 2131165287;
+			
 			// aapt resource value: 0x7f070059
 			public const int action0 = 2131165273;
-			// aapt resource value: 0x7f070067
-			public const int AutoUpdate = 2131165287;
-			
-			// aapt resource value: 0x7f070068
-			public const int CheckUpdate = 2131165288;
-			
-			// aapt resource value: 0x7f070066
-			public const int PicMode = 2131165286;
-			
-			// aapt resource value: 0x7f070058
-			public const int action0 = 2131165272;
 			
 			// aapt resource value: 0x7f070042
 			public const int action_bar = 2131165250;
@@ -1680,8 +1678,8 @@ namespace cnBetaPersonalVersion
 			// aapt resource value: 0x7f07005c
 			public const int media_actions = 2131165276;
 			
-			// aapt resource value: 0x7f070069
-			public const int menuItem1 = 2131165289;
+			// aapt resource value: 0x7f07006a
+			public const int menuItem1 = 2131165290;
 			
 			// aapt resource value: 0x7f07001b
 			public const int middle = 2131165211;
@@ -1797,13 +1795,11 @@ namespace cnBetaPersonalVersion
 			// aapt resource value: 0x7f07000c
 			public const int tabMode = 2131165196;
 			
+			// aapt resource value: 0x7f070066
+			public const int tableLayout1 = 2131165286;
+			
 			// aapt resource value: 0x7f070063
 			public const int text = 2131165283;
-			// aapt resource value: 0x7f070065
-			public const int tableLayout1 = 2131165285;
-			
-			// aapt resource value: 0x7f070062
-			public const int text = 2131165282;
 			
 			// aapt resource value: 0x7f070061
 			public const int text2 = 2131165281;
