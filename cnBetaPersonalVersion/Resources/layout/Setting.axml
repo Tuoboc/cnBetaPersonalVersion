@@ -22,6 +22,17 @@
             android:gravity="right"
             android:id="@+id/PicMode" />
     </TableRow>
+  <TableRow>
+    <TextView
+        android:textSize="20dp"
+        android:text="自动更新"
+        android:padding="10dp" />
+    <Switch
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="right"
+        android:id="@+id/AutoUpdate" />
+  </TableRow>
     <TableRow>
         <Button
            android:id="@+id/CheckUpdate"

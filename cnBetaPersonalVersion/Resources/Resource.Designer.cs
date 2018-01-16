@@ -1526,7 +1526,10 @@ namespace cnBetaPersonalVersion
 			public const int ArticleContent = 2131165270;
 			
 			// aapt resource value: 0x7f070067
-			public const int CheckUpdate = 2131165287;
+			public const int AutoUpdate = 2131165287;
+			
+			// aapt resource value: 0x7f070068
+			public const int CheckUpdate = 2131165288;
 			
 			// aapt resource value: 0x7f070066
 			public const int PicMode = 2131165286;
@@ -1675,8 +1678,8 @@ namespace cnBetaPersonalVersion
 			// aapt resource value: 0x7f07005b
 			public const int media_actions = 2131165275;
 			
-			// aapt resource value: 0x7f070068
-			public const int menuItem1 = 2131165288;
+			// aapt resource value: 0x7f070069
+			public const int menuItem1 = 2131165289;
 			
 			// aapt resource value: 0x7f07001b
 			public const int middle = 2131165211;
