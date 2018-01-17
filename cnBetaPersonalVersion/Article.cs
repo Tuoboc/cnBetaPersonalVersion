@@ -59,32 +59,14 @@ namespace cnBetaPersonalVersion
             get { return articleList.Length; }
         }
 
-        /// <summary>
-        /// 异步获取文件流
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        public Stream GetFileStream(string url)
-        {
-            try
-            {
-                var request = (HttpWebRequest)WebRequest.Create(url);
-                var response = (HttpWebResponse) request.GetResponse();
-                var responseString = response.GetResponseStream();
-                return responseString;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+       
 
         public  void GetArticle()
         {
             List<Article> articleList = new List<Article>();
             try
             {
-                var responseString =  GetFileStream("http://www.cnbeta.com/");
+                var responseString = CommonFun.GetFileStream("http://www.cnbeta.com/");
                 HtmlDocument html = new HtmlDocument();
 
                 html.Load(responseString);
@@ -197,7 +179,7 @@ namespace cnBetaPersonalVersion
             try
             {
                 string url = "http://www.cnbeta.com/home/more?&type=all&page="+(_page+1)+"&_csrf="+_csrf+"&_"+GetTimeStamp();
-                var responseString =  GetFileStream(url);
+                var responseString = CommonFun.GetFileStream(url);
                 responseString.Position = 0;
                 StreamReader reader = new StreamReader(responseString);
                 string text = reader.ReadToEnd();

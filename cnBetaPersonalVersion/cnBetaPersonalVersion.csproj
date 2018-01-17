@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
+    <Compile Include="CommonFun.cs" />
     <Compile Include="SettingActivity.cs" />
     <Compile Include="DetailActivity.cs" />
     <Compile Include="GlobalVariables.cs" />

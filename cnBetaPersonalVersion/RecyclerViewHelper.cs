@@ -85,7 +85,7 @@ namespace cnBetaPersonalVersion
         {
             var receive = e.Argument as object[];
             var ah = (ArticleHolder)receive[1];
-            stream = articleList.GetFileStream((string)receive[0]);
+            stream = CommonFun.GetFileStream((string)receive[0]);
             ah.Image.SetImageBitmap(Android.Graphics.BitmapFactory.DecodeStream(stream));
         }
 
